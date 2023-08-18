@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
+use PDF;
 use App\Models\Ujian;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,8 @@ class UjianController extends Controller
      */
     public function index()
     {
-        //
+        $data = ujian::all();
+        return view('welcome',compact('data'));
     }
 
     /**
@@ -20,7 +23,7 @@ class UjianController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -28,7 +31,9 @@ class UjianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ujian = Ujian::create($request->all());
+
+        return redirect()->route('ujian_index');
     }
 
     /**
@@ -44,7 +49,8 @@ class UjianController extends Controller
      */
     public function edit(Ujian $ujian)
     {
-        //
+        // $ujian = ujian::findOrFail($id);
+        return view('edit',compact('ujian'));
     }
 
     /**
@@ -52,7 +58,9 @@ class UjianController extends Controller
      */
     public function update(Request $request, Ujian $ujian)
     {
-        //
+        $ujian->update($request->all());
+
+        return redirect()->route('ujian_index');
     }
 
     /**
@@ -60,6 +68,13 @@ class UjianController extends Controller
      */
     public function destroy(Ujian $ujian)
     {
-        //
+        $ujian->delete();
+        return redirect()->route('ujian_index');
+    }
+
+    public function cetak(){
+        $ujian = Ujian::all();
+
+        return view('cetak',compact('ujian'));
     }
 }

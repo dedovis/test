@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ujian extends Model
 {
-    use HasFactory;
+    protected $guarded = [
+        '',
+    ];
 }

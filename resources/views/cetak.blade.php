@@ -124,9 +124,17 @@
                 </tbody>
             </table>
             <br>
-
+            <button id="btnPrint" class="btn btn-lg" style="width: 150px; height:40px; background-color:rgb(147, 147, 181); color:white;" onclick="PrintWindow()">Cetak</button>
         </div>
     </div>
+    <script type="text/javascript">
+        function PrintWindow() {
+            var btnPrint = document.getElementById("btnPrint");
+            btnPrint.style.visibility = 'hidden';
+            window.print()
+            btnPrint.style.visibility = 'visible';
+        }
+    </script>
 </body>
 
 </html>

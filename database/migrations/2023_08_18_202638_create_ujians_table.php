@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('ujians', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_mobil');
+            $table->string('nomor_plat');
+            $table->string('merk');
+            $table->string('jenis');
+            $table->string('tahun');
+            $table->string('harga');
+            // $table->string('foto')->length(100)->nullable();
             $table->timestamps();
         });
     }
